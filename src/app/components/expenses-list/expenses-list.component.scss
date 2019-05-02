@@ -1,0 +1,25 @@
+.add-button {
+	background: none;
+	border: none;
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	background-color: purple;
+	height: 8rem;
+	color: white;
+	font-size: 2rem;
+}
+
+.container {
+	margin-bottom: 8rem;
+}
+
+.logo {
+	width: 3rem;
+	display: -webkit-inline-box;
+}
+
+.value {
+	font-weight: 500;
+}

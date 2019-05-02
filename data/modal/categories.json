@@ -1,0 +1,40 @@
+{
+  "list": [
+    {
+      "label": "Moradia",
+      "value": "moradia"
+    },
+    {
+      "label": "Saúde",
+      "value": "saude"
+    },
+    {
+      "label": "Educação",
+      "value": "educacao"
+    },
+    {
+      "label": "Transporte",
+      "value": "transporte"
+    },
+    {
+      "label": "Mercado",
+      "value": "mercado"
+    },
+    {
+      "label": "Alimentação",
+      "value": "alimentacao"
+    },
+    {
+      "label": "Lazer",
+      "value": "lazer"
+    },
+    {
+      "label": "Compras",
+      "value": "compras"
+    },
+    {
+      "label": "Trabalho",
+      "value": "trabalho"
+    }
+  ]
+}
