@@ -1,22 +1,42 @@
 <div class="modal-dialog">
-  <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+  <form
+    [formGroup]="expenseForm"
+    (ngSubmit)="onSubmit()">
+
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" (click)="closeModal()">&times;</button>
-        <h4 class="modal-title">Add new expense</h4>
+        <button
+          type="button"
+          class="close"
+          (click)="closeModal()">&times;</button>
+
+        <h4 class="modal-title">{{ data['modal-title'] }}</h4>
+
       </div>
       <div class="modal-body">
+
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <div class="form-group">
-              <label for="title">Title:</label>
-              <input class="form-control" type="text" formControlName="title" id="title" autofocus>
+              <label for="title"> {{ data['title-label'] }} </label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="title"
+                id="title"
+                autofocus>
             </div>
           </div>
+
           <div class="col-sm-12 col-md-6">
             <div class="form-group">
-              <label for="value">Value:</label>
-              <input class="form-control" type="text" formControlName="value" id="value" placeholder="R$"
+              <label for="value">{{ data['value-label'] }}</label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="value"
+                id="value"
+                placeholder="R$"
                 mask="dot_separator.2">
             </div>
           </div>
@@ -25,27 +45,47 @@
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <div class="form-group">
-              <label for="date">When:</label>
-              <input class="form-control" type="date" formControlName="date" id="date">
+              <label for="date">{{ data['date-label'] }}</label>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="date"
+                id="date">
             </div>
           </div>
+
           <div class="col-sm-12 col-md-6">
             <div class="form-group">
-              <label for="category">Category:</label>
+              <label for="category">{{ data['category-label'] }}</label>
               <div class="input-group">
                 <span class="input-group-btn">
-                  <select class="form-control" formControlName="category" name="category" id="category">
-                    <option *ngFor="let cat of categories.sort()" value="{{ cat.value }}">{{ cat.label }}</option>
+                  <select
+                    class="form-control"
+                    formControlName="category"
+                    name="category"
+                    id="category">
+                      <option
+                        *ngFor="let cat of categories.sort()"
+                        value="{{ cat.value }}">{{ cat.label }}</option>
                   </select>
                 </span>
               </div>
             </div>
           </div>
+
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="closeModal()">Close</button>
-        <button type="submit" class="btn btn-primary" [disabled]="!expenseForm.valid">Save changes</button>
+        <button
+          type="button"
+          class="btn btn-default"
+          (click)="closeModal()"
+        > {{ data['title-close'] }} </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!expenseForm.valid"
+        >{{ data['title-save'] }}</button>
       </div>
     </div>
   </form>

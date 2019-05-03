@@ -5,21 +5,17 @@
 	position: fixed;
 	bottom: 0px;
 	right: 0px;
-	background-color: purple;
+	background-color: #B6B37E;
 	height: 8rem;
-	color: white;
+	color: #251B4E;
 	font-size: 2rem;
 }
 
 .container {
-	margin-bottom: 8rem;
+	padding: 8rem 0;
 }
 
-.logo {
-	width: 3rem;
-	display: -webkit-inline-box;
-}
-
-.value {
-	font-weight: 500;
+.panel-heading {
+	color: #BFB7E6;
+	background-color: #403874;
 }

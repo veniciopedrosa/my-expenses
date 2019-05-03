@@ -1,17 +1,5 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <img alt="Brand" class="logo" src="https://image.flaticon.com/icons/svg/579/579514.svg">
-        MyExpenses
-      </a>
-    </div>
-    <div class="navbar-header navbar-text navbar-right">
-      <p>{{ totalLabel }} = {{ total  | currency:'BRL' }}</p>
-    </div>
-  </div>
-</nav>
-<h2 *ngIf="expenses && !expenses.length" class="text-center">{{ noExpenseTitle }}</h2>
+<navbar [titleRight]="totalTitle"></navbar>
+<h2 *ngIf="expenses && !expenses.length" class="text-center">{{ data['no-expense-title'] }}</h2>
 <div *ngIf="expenses && expenses.length" class="container">
   <div class="panel panel-default" *ngFor="let exp of expenses; let i = index">
     <div class="panel-heading">
@@ -34,5 +22,5 @@
     </div>
   </div>
 </div>
-<button class="add-button" type="button" (click)="openModal()">{{ buttonLabel }}</button>
+<button class="add-button" type="button" (click)="openModal()">{{ data['new-expense-button'] }}</button>
 <add-expense (expensesChanged)="updateList()" *ngIf="isOpen"></add-expense>

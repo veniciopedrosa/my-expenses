@@ -1,5 +1,12 @@
 {
-  "list": [
+  "modal-title": "Add new expense",
+  "title-label": "Title:",
+  "value-label": "Value:",
+  "date-label": "When:",
+  "category-label": "Category:",
+  "title-close": "Close",
+  "title-save": "Save expense",
+  "listCategories": [
     {
       "label": "Moradia",
       "value": "moradia"

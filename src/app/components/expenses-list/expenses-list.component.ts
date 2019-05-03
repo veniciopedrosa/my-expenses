@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ExpenseService } from '../../services/expense/expense.service';
 import { ModalService } from '../../services/modal/modal.service';
@@ -10,18 +11,17 @@ const data = require('../../../../data/home/home.json');
   styleUrls: ['./expenses-list.component.scss']
 })
 export class ExpensesListComponent implements OnInit {
-  isOpen = false;
-  expenses;
-  total;
-  noExpenseTitle = data['no-expense-title'];
-  totalLabel = data['total-label'];
-  buttonLabel = data['new-expense-button'];
+  public isOpen = false;
+  public expenses;
+  public data = data;
+  public totalTitle;
 
 
 
   constructor(
     private expenseService: ExpenseService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private cp: CurrencyPipe,
   ) { }
 
   ngOnInit() {
@@ -34,7 +34,8 @@ export class ExpensesListComponent implements OnInit {
   public listExpenses() {
     this.expenseService.getExpenses().subscribe(data => {
       this.expenses = data;
-      this.total = data.reduce((a, b) => parseFloat(a) + parseFloat(b['value']), 0);
+      const total = data.reduce((a, b) => parseFloat(a) + parseFloat(b['value']), 0);
+      this.totalTitle = `${ this.data['total-label'] } = ${ this.cp.transform(total, 'BRL') }`;
     })
   }
 

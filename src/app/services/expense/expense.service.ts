@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
-import { HttpHelper, Endpoints } from '../../helpers/http.helper';
+import { Endpoints, HttpHelper } from '../../helpers/http.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class ExpenseService {
   }
 
   public deleteExpense(index): Observable<any> {
-    const url = this.httpHelper.getUrl(Endpoints.EXPENSES_DELETE, {index});
+    const url = this.httpHelper.getUrl(Endpoints.EXPENSES_DELETE, { index });
     return this.http.delete(url);
   }
 }

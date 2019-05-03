@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ExpenseService } from '../../services/expense/expense.service';
 import { ModalService } from '../../services/modal/modal.service';
 declare var require: any;
-const data = require('../../../../data/modal/categories.json')
+const data = require('../../../../data/modal/modal.json')
 
 @Component({
   selector: 'add-expense',
@@ -12,9 +12,10 @@ const data = require('../../../../data/modal/categories.json')
 })
 export class AddExpenseComponent implements OnInit {
   @Output()
-  expensesChanged = new EventEmitter();
-  expenseForm;
-  categories;
+  public expensesChanged = new EventEmitter();
+  public expenseForm;
+  public categories: Array<object>;
+  public data: any = data;
 
   constructor(
     private fb: FormBuilder,
@@ -25,7 +26,7 @@ export class AddExpenseComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.setDefaulDate();
-    this.categories = data.list.sort((a, b) => a.label.localeCompare(b.label));
+    this.fillCategories();
   }
 
   private buildForm() {
@@ -38,17 +39,23 @@ export class AddExpenseComponent implements OnInit {
   }
 
   private setDefaulDate() {
-    const date = new Date();
-    date.setDate(date.getDate() - 1);
-    const currentDate = date.toISOString().substring(0, 10);
+    const currentDate = new Date().toISOString().substring(0, 10);
     this.expenseForm.controls['date'].setValue(currentDate);
   }
 
+  private fillCategories() {
+    this.categories = data.listCategories
+                      .sort((a, b) => a.label.localeCompare(b.label));
+  }
+
   public onSubmit() {
-    this.expenseService.addExpense(this.expenseForm.value).subscribe(data => {
-      this.closeModal();
-      this.expensesChanged.emit();
-    });
+    const form = this.expenseForm.value;
+    this.expenseService
+        .addExpense(form)
+        .subscribe(() => {
+          this.closeModal();
+          this.expensesChanged.emit();
+      });
   }
 
   public closeModal() {

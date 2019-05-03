@@ -14,13 +14,15 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { HttpHelper } from './helpers/http.helper';
 import { CurrencyPipe } from '@angular/common';
 import {NgxMaskModule} from 'ngx-mask';
+import { SharedComponent } from './components/shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExpensesListComponent,
     AddExpenseComponent,
-    LoaderComponent
+    LoaderComponent,
+    SharedComponent
   ],
   imports: [
     NgxMaskModule.forRoot(),

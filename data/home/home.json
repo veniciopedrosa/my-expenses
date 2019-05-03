@@ -1,5 +1,6 @@
 {
 	"no-expense-title": "You don't have expenses yet",
 	"total-label": "Total",
-	"new-expense-button": "New expense"
+	"new-expense-button": "New expense",
+	"title-logo": "MyExpenses"
 }
